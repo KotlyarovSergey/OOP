@@ -38,4 +38,16 @@ public class Animal {
         return arg + TYPE;
     }
 
+    protected void toGo(){
+        System.out.println("Я пошёл(ла)");
+    }
+
+    protected void fly(){
+        System.out.println("Я полетел(а)");
+    }
+
+    protected void swim(){
+        System.out.println("Я поплыл(а)");
+    }
+
 }

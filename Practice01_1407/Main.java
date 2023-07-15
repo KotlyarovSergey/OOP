@@ -24,6 +24,22 @@ public class Main {
         // System.out.println(musya.getType());
         // System.out.println(musya.getType("C arg "));
         cat.hunt();
+        System.out.println();
+
+        Owl sovka = new Owl("Совка", "Серёжа", "Здорова", false, 4.3f);
+        System.out.println(sovka);
+        sovka.fly();
+        sovka.swim();
+
+        Mouse jerry = new Mouse("Джери", "Серёжа", "Обжорство", true, "brown");
+        System.out.println(jerry);
+        jerry.toGo();
+        jerry.fly();
+
+        Turtle mikkey = new Turtle("Микеланджело", "Серёжа", "Зеленуха", false, 7);
+        System.out.println(mikkey);
+        mikkey.swim();
+        mikkey.fly();
 
     }
 }
