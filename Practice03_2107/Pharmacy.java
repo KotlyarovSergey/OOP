@@ -45,22 +45,31 @@ public class Pharmacy implements Iterable<Component>, Comparable<Pharmacy>, Comp
 
     @Override
     public int compareTo(Pharmacy o) {
-        if (this.getPharmacyPower() > o.getPharmacyPower())
-            return 10;
-        else if (this.getPharmacyPower() < o.getPharmacyPower())
-            return -10;
+        // if (this.getPharmacyPower() > o.getPharmacyPower())
+        // return 10;
+        // else if (this.getPharmacyPower() < o.getPharmacyPower())
+        // return -10;
+        // return 0;
+        
+        int dif = this.getPharmacyPower() - o.getPharmacyPower();
+        if(dif != 0) return dif;
+
+        dif = this.components.size() - o.components.size();
+        if(dif != 0) return dif;
+
+
         return 0;
     }
 
     @Override
     public int compare(Pharmacy o1, Pharmacy o2) {
-        // return o1.compareTo(o2);
+        return o1.compareTo(o2);
 
-        if (o1.getPharmacyPower() > o2.getPharmacyPower())
-            return 10;
-        else if (o1.getPharmacyPower() < o2.getPharmacyPower())
-            return -10;
-        return 0;
+        // if (o1.getPharmacyPower() > o2.getPharmacyPower())
+        //     return 10;
+        // else if (o1.getPharmacyPower() < o2.getPharmacyPower())
+        //     return -10;
+        // return 0;
 
     }
 
@@ -83,5 +92,55 @@ public class Pharmacy implements Iterable<Component>, Comparable<Pharmacy>, Comp
 
     // };
     // }
+
+    @Override
+    public boolean equals(Object obj) {
+        // если ссылаются на один и тот же обект
+        if (obj == this) {
+            return true;
+        }
+        // если obj не на что нессылается или это вообще другой класс
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+        
+        Pharmacy p = (Pharmacy)obj;
+        // если колич компонентов разное
+        if(this.components.size() != p.components.size()) return false;
+        
+        // сравниваем названия компонентов
+        return compareComponentNames(p);
+    }
+
+    private boolean compareComponentNames(Pharmacy pharm){
+        for (Component component : pharm.components) {
+            if(!existComponent(component)) return false;
+        }
+        return true;
+    }
+
+    private boolean existComponent(Component component){
+        for (Component ourComponent : this.components) {
+            if(ourComponent.getName() == component.getName()) return true;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 13131;
+        int result = 1;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Component component : components) {
+            stringBuilder.append(component.getName()).append(component.getWeight());
+            result += stringBuilder.toString().hashCode();
+            stringBuilder.setLength(0);
+
+            result += prime * component.getPower();
+        }
+
+        return result;
+    }
+
 
 }

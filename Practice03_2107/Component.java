@@ -10,6 +10,14 @@ public class Component {
         this.weight = weight;
         this.power = power;
     }
+    
+    public String getName() {
+        return name;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
 
     public int getPower(){
         return power;
