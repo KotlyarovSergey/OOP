@@ -76,8 +76,13 @@ public class Main {
         pharmacy3 = new Pharmacy();
         pharmacy3.addComponent(new Component("1", "0.6", 10))
                 .addComponent(new Component("2", "1.2", 3))
-                .addComponent(new Component("3", "1.2", 2));
+                .addComponent(new Component("3", "1.2", 3));
         pharmacyList.add(pharmacy3);
+        pharmacy = new Pharmacy();
+        pharmacy.addComponent(new Component("Peneceline", "0.6", 15))
+                .addComponent(new Component("Vater", "1.2", 4));
+        pharmacyList.add(pharmacy);
+
         System.out.println(pharmacyList);
         System.out.println("----------");
 
